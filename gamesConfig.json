@@ -40,7 +40,7 @@
       "id": "who_am_i",
       "name": " أنا مين؟ ",
       "moduleName": "WhoAmIGame",
-      "folder": "who_am_i",
+      "folder": "who_am_I",
       "enabled": true,
       "iconClass": "fas fa-user-secret",
       "requiresRps": false
