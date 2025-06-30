@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملعب ولع</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="games/risk/risk_game.css">
+    <link rel="stylesheet" href="games/dress_friend/dress_friend.css">
+    <link rel="stylesheet" href="games/acting/acting.css">
+    <link rel="stylesheet" href="games/who_am_i/who_am_i.css">
+    <link rel="stylesheet" href="games/lie_correctly/lie_correctly.css">
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-900">
+    <div id="game-container" class="bg-gray-800 text-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-2xl mx-auto border-2 border-green-500 relative overflow-hidden">
+        
+        <div id="splash-screen" class="text-center flex flex-col justify-start items-center min-h-[400px] pt-10">
+            <h1 class="text-6xl md:text-7xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-500 py-4 animate__animated animate__fadeInDown" style="--animate-duration: 15s;">
+                الملعب ولع
+            </h1>
+            <p class="text-xl md:text-2xl font-semibold text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                لعبة تحديات كرة القدم
+            </p>
+            <button id="startLobbyButton" class="button-primary text-white font-bold py-4 px-10 rounded-xl text-2xl animate__animated animate__tada animate__delay-2s">
+                <i class="fas fa-play mr-2"></i> ابدأ اللعبة
+            </button>
+            <p class="text-gray-500 text-sm absolute bottom-4 animate__animated animate__fadeIn animate__delay-3s">
+                Made by: Mahmoud El-Saadany
+            </p>
+        </div>
+
+        <div id="team-setup-screen" class="hidden text-center">
+            <div class="header-gradient text-white py-4 px-6 rounded-xl mb-6">
+                <h2 class="text-3xl font-extrabold">إعداد الفرق</h2>
+            </div>
+            <div class="space-y-6 mb-8 text-right">
+                <div>
+                    <label id="team1Label" for="team1NameInput" class="font-bold text-lg mb-2 block transition-colors duration-300" style="color: #22c55e;">اسم الفريق الأول:</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="team1NameInput" class="w-full p-3 rounded-lg border-2 bg-gray-700 border-gray-600 focus:border-green-500 focus:ring focus:ring-green-300 transition" value="الفريق الأول">
+                        <div id="team1-color-preview" class="w-8 h-8 rounded-full border-2 border-gray-400 flex-shrink-0" style="background-color: #22c55e;"></div>
+                    </div>
+                    <div class="mt-3 flex justify-center items-center gap-x-2 sm:gap-x-3" id="team1ColorSelector">
+                        <span class="font-semibold text-gray-300">اللون:</span>
+                        <div class="color-box" data-color="#ef4444" style="background-color: #ef4444;"></div>
+                        <div class="color-box selected" data-color="#22c55e" style="background-color: #22c55e;"></div>
+                        <div class="color-box" data-color="#facc15" style="background-color: #facc15;"></div>
+                        <div class="color-box" data-color="#3b82f6" style="background-color: #3b82f6;"></div>
+                        <div class="color-box" data-color="#e5e7eb" style="background-color: #e5e7eb;"></div>
+                        <div class="color-box" data-color="#f97316" style="background-color: #f97316;"></div>
+                    </div>
+                </div>
+                <div>
+                    <label id="team2Label" for="team2NameInput" class="font-bold text-lg mb-2 block transition-colors duration-300" style="color: #facc15;">اسم الفريق الثاني:</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="team2NameInput" class="w-full p-3 rounded-lg border-2 bg-gray-700 border-gray-600 focus:border-green-500 focus:ring focus:ring-300 transition" value="الفريق الثاني">
+                        <div id="team2-color-preview" class="w-8 h-8 rounded-full border-2 border-gray-400 flex-shrink-0" style="background-color: #facc15;"></div>
+                    </div>
+                    <div class="mt-3 flex justify-center items-center gap-x-2 sm:gap-x-3" id="team2ColorSelector">
+                        <span class="font-semibold text-gray-300">اللون:</span>
+                        <div class="color-box" data-color="#ef4444" style="background-color: #ef4444;"></div>
+                        <div class="color-box" data-color="#22c55e" style="background-color: #22c55e;"></div>
+                        <div class="color-box selected" data-color="#facc15" style="background-color: #facc15;"></div>
+                        <div class="color-box" data-color="#3b82f6" style="background-color: #3b82f6;"></div>
+                        <div class="color-box" data-color="#e5e7eb" style="background-color: #e5e7eb;"></div>
+                        <div class="color-box" data-color="#f97316" style="background-color: #f97316;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button id="settingsButtonFromSetup" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-xl text-lg flex items-center justify-center gap-2">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </button>
+                <button id="goToGameSelectionButton" class="button-primary text-white font-bold py-3 px-6 rounded-xl text-lg">
+                    انتقل لاختيار اللعبة <i class="fas fa-arrow-left mr-2"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="game-selection-screen" class="hidden text-center">
+            <div class="header-gradient text-white py-4 px-6 rounded-xl mb-8">
+                <h2 class="text-3xl font-extrabold">اختار اللعبة!</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                </div>
+        </div>
+
+        <div id="rules-display-screen" class="hidden text-center">
+            <div id="rules-header" class="header-gradient text-white py-4 px-6 rounded-xl mb-6">
+                <h2 class="text-3xl font-extrabold">قوانين اللعبة</h2>
+            </div>
+            <div id="rules-content-container" class="text-right space-y-3 overflow-y-auto max-h-[300px] p-1">
+                </div>
+            <button id="startGameFromRulesButton" class="button-primary text-white font-bold py-3 px-8 rounded-xl w-full text-xl mt-6">
+                <i class="fas fa-play mr-2"></i> ابدأ اللعبة
+            </button>
+        </div>
+        
+        <div id="rps-screen" class="hidden text-center">
+            <div class="header-gradient text-white py-4 px-6 rounded-xl mb-6"> <h2 class="text-3xl font-extrabold">من سيبدأ أولاً؟</h2> </div>
+            <p id="rps-instruction" class="text-lg text-gray-300 mb-6">اختر الفريق الذي سيبدأ اللعب:</p>
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <button id="select-team1-starter" class="rps-team-selector-button p-6 rounded-lg text-white font-bold text-2xl transition-all duration-300 transform hover:scale-105" style="background-color: #22c55e;">
+                    <span id="rps-select-team1-name">الفريق الأول</span> <i class="fas fa-arrow-left ml-2"></i>
+                </button>
+                <button id="select-team2-starter" class="rps-team-selector-button p-6 rounded-lg text-white font-bold text-2xl transition-all duration-300 transform hover:scale-105" style="background-color: #facc15;">
+                    <i class="fas fa-arrow-right mr-2"></i> <span id="rps-select-team2-name">الفريق الثاني</span>
+                </button>
+            </div>
+            <div id="rps-result-container" class="min-h-[80px] flex flex-col justify-center items-center">
+                <p id="rps-result-text" class="text-2xl font-bold"></p>
+                <button id="rps-start-game-button" class="hidden mt-4 button-primary text-white font-bold py-3 px-8 rounded-xl text-xl"> <i class="fas fa-rocket mr-2"></i> لنبدأ اللعبة </button>
+            </div>
+        </div>
+
+        <div id="inter-round-screen" class="hidden text-center p-8 flex flex-col justify-center items-center min-h-[400px]">
+            <h2 id="inter-round-title" class="text-3xl font-extrabold mb-2 animate__animated animate__fadeInDown"></h2>
+            <div id="inter-round-score-display" class="w-full my-4 hidden">
+                <p class="text-xl text-gray-400 mb-3">النتيجة الحالية</p>
+                <div class="flex justify-around items-center bg-gray-900 bg-opacity-50 p-6 rounded-xl shadow-lg">
+                    <div class="flex flex-col items-center">
+                        <h4 id="inter-round-team1-name" class="font-bold text-2xl mb-1"></h4>
+                        <p id="inter-round-team1-score" class="text-5xl font-black text-green-400"></p>
+                    </div>
+                    <div class="text-5xl font-bold text-gray-500">:</div>
+                    <div class="flex flex-col items-center">
+                        <h4 id="inter-round-team2-name" class="font-bold text-2xl mb-1"></h4>
+                        <p id="inter-round-team2-score" class="text-5xl font-black text-yellow-400"></p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-2xl my-4 animate__animated animate__fadeInUp">الآن دور الفريق: <span id="next-team-name" class="font-bold"></span></p>
+            <button id="startNextRoundButton" class="button-primary text-white font-bold py-4 px-10 rounded-xl text-2xl animate__animated animate__tada animate__delay-1s">
+                <i class="fas fa-play mr-2"></i> ابدأ الجولة
+            </button>
+        </div>
+
+        <div id="game-module-container" class="hidden">
+            </div>
+        
+        <div id="settings-screen" class="hidden text-center"></div>
+
+        <div id="pause-screen" class="absolute inset-0 bg-gray-900 bg-opacity-90 hidden flex flex-col justify-center items-center text-center p-8 z-40">
+            <h2 class="text-4xl font-black text-white mb-8 animate__animated animate__fadeInDown">اللعبة متوقفة مؤقتاً</h2>
+            <div class="space-y-4">
+                <button id="resume-game-button" class="button-primary text-white font-bold py-3 px-8 rounded-xl text-xl animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-play mr-2"></i> استئناف اللعبة
+                </button>
+                <button id="pause-main-menu-button" class="button-secondary text-white font-bold py-3 px-8 rounded-xl text-xl animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-home mr-2"></i> القائمة الرئيسية
+                </button>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="game-over-screen" class="full-screen-overlay hidden">
+        <div class="winner-card text-center animate__animated animate__zoomIn">
+            <i id="winner-trophy" class="fas fa-trophy text-7xl mb-4" style="color: #ffd700; text-shadow: 0 0 20px #ffd700, 0 0 35px #ff8c00;"></i>
+            <h2 class="text-3xl font-black mb-2">الفائز هو</h2>
+            <h3 id="winner-name" class="winner-name text-5xl font-black mb-6"></h3>
+            <div class="final-scores bg-black bg-opacity-25 p-4 rounded-lg my-6">
+                <p class="text-xl font-bold">النتيجة النهائية</p>
+                <p id="final-score-text" class="text-4xl font-black mt-2"></p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                 <button id="main-menu-button" class="button-secondary py-3 text-lg"><i class="fas fa-home mr-2"></i> القائمة الرئيسية</button>
+                 <button id="play-again-button" class="button-primary py-3 text-lg"><i class="fas fa-redo mr-2"></i> اللعب مرة أخرى</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="countdown-screen" class="hidden absolute inset-0 bg-gray-900 flex justify-center items-center z-50">
+        <span id="countdown-number" class="font-black text-white"></span>
+    </div>
+
+    <div id="confetti-container"></div>
+    <div id="score-popup"></div> 
+
+    <script src="core.js" defer></script>
+</body>
+</html>
+<div id="tiebreaker-setup-screen" class="full-screen-overlay hidden">
+    <div id="tiebreaker-card" class="text-center p-8 rounded-2xl">
+        <h2 class="text-5xl font-black mb-4">جولة فاصلة!</h2>
+        <p id="tiebreaker-step1-text" class="text-xl text-gray-300 mb-6">النتيجة تعادل! على من سيكون دور التمثيل؟</p>
+        
+        <div id="tiebreaker-team-selection" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <button id="tiebreaker-select-team1" class="rps-team-selector-button p-4 rounded-lg text-white font-bold text-2xl"></button>
+            <button id="tiebreaker-select-team2" class="rps-team-selector-button p-4 rounded-lg text-white font-bold text-2xl"></button>
+        </div>
+
+        <div id="tiebreaker-reveal-step" class="hidden">
+            <p class="text-xl text-gray-300 mb-6">ممتاز! الآن قم بإظهار اسم اللاعب للشخص الذي سيقوم بالتمثيل.</p>
+            <button id="tiebreaker-reveal-player-button" class="button-primary w-full text-xl py-4">
+                <i class="fas fa-eye mr-2"></i> إظهار اسم اللاعب
+            </button>
+        </div>
+    </div>
+</div>
+<div id="player-reveal-overlay" class="full-screen-overlay hidden">
+    <div id="player-reveal-card" class="text-center">
+        <div id="player-reveal-stars"></div>
+        <img id="player-reveal-image" src="" alt="صورة اللاعب" class="player-image">
+        <h3 id="player-reveal-name" class="player-name"></h3>
+        <button id="player-reveal-continue-button" class="button-secondary mt-8">
+            المتابعة للجولة التالية <i class="fas fa-arrow-left mr-2"></i>
+        </button>
+    </div>
+</div>

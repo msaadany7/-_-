@@ -1,0 +1,58 @@
+{
+  "games": [
+    {
+      "id": "bank_game",
+      "name": " بنك ",
+      "moduleName": "BankGame",
+      "folder": "bank",
+      "enabled": true,
+      "iconClass": "fas fa-piggy-bank",
+      "requiresRps": true
+    },
+    {
+      "id": "risk_game",
+      "name": "ريسك",
+      "moduleName": "RiskGame",
+      "folder": "risk",
+      "enabled": true,
+      "iconClass": "fas fa-hand-pointer",
+      "requiresRps": true
+    },
+    {
+      "id": "dress_friend",
+      "name": "لبس صاحبك",
+      "moduleName": "DressFriendGame",
+      "folder": "dress_friend",
+      "enabled": true,
+      "iconClass": "fas fa-smile-wink",
+      "requiresRps": false
+    },
+    {
+      "id": "acting",
+      "name": "تمثيل",
+      "moduleName": "Acting",
+      "folder": "acting",
+      "enabled": true,
+      "iconClass": "fas fa-theater-masks",
+      "requiresRps": true
+    },
+    {
+      "id": "who_am_i",
+      "name": " أنا مين؟ ",
+      "moduleName": "WhoAmIGame",
+      "folder": "who_am_i",
+      "enabled": true,
+      "iconClass": "fas fa-user-secret",
+      "requiresRps": false
+    },
+    {
+      "id": "lie_correctly",
+      "name": "اكدب صح",
+      "moduleName": "LieCorrectlyGame",
+      "folder": "lie_correctly",
+      "enabled": true,
+      "iconClass": "fas fa-comment-dots",
+      "requiresRps": true
+    }
+  ]
+}
