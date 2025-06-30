@@ -1,0 +1,30 @@
+/* --- أنماط خاصة بكارت السؤال في لعبة بنك --- */
+#question-card-bank {
+    background: linear-gradient(145deg, #2d3748, #1a202c);
+    border: 1px solid var(--border-color);
+}
+
+/* --- أنماط مؤثر ظهور النقاط عند البنك --- */
+#score-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    background: var(--bank-gradient);
+    color: #1f2937;
+    font-size: 2.5rem;
+    font-weight: 900;
+    border-radius: 1rem;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+}
+#score-popup.show {
+    animation: score-popup-animation 1.5s ease-out forwards;
+}
+@keyframes score-popup-animation {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    60% { transform: translate(-50%, -150%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -200%) scale(1.1); opacity: 0; }
+}

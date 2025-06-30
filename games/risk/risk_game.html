@@ -1,0 +1,93 @@
+<div id="risk-game-screen">
+    <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+        <div id="team1-display-risk" class="p-4 rounded-lg text-white font-bold transition-colors"> <h3 class="text-xl">الفريق الأول</h3><p class="text-3xl mt-1">0</p> </div>
+        <div id="team2-display-risk" class="p-4 rounded-lg text-white font-bold transition-colors"> <h3 class="text-xl">الفريق الثاني</h3><p class="text-3xl mt-1">0</p> </div>
+    </div>
+    
+    <div class="bg-gray-900 p-4 rounded-xl mb-4 space-y-2">
+        <div class="flex justify-between items-center text-lg">
+            <p>الدور على: <span id="current-turn-team-name-risk" class="font-extrabold">الفريق الحالي</span></p>
+            <div id="timer-display-risk" class="text-2xl font-mono font-bold text-gray-100">35</div>
+        </div>
+        <div id="question-info-display" class="text-center border-t border-gray-700 pt-2 hidden">
+            <span id="question-topic-info" class="font-bold text-teal-300"></span>
+            <span class="text-gray-400">|</span>
+            <span id="question-points-info" class="font-bold text-yellow-300"></span>
+        </div>
+    </div>
+    <div class="progress-bar-container mb-4"><div id="questions-progress-bar-risk" class="progress-bar" style="width: 100%;"></div></div>
+    
+    <p id="team-instructions" class="text-xl text-yellow-300 font-bold mb-4 hidden"></p>
+
+    <div id="topics-container" class="grid grid-cols-2 gap-4 mb-6">
+    </div>
+
+    <div id="pre-question-countdown-display" class="hidden animate__animated animate__fadeIn">
+    <span id="pre-question-countdown-number" class="countdown-big-number"></span>
+    </div>
+
+    <div id="double-points-confirmation-screen" class="full-screen-overlay hidden animate__animated animate__zoomIn">
+        <div class="text-center p-8 rounded-xl bg-gray-800 border-2 border-primary-neon shadow-lg">
+            <h2 class="text-5xl md:text-6xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 animate__animated animate__pulse animate__infinite glow-text-orange">
+                نقاط مضاعفة (2X)!
+            </h2>
+            <p class="text-2xl text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                استعد للتحدي بضعف النقاط!
+            </p>
+            <button id="goToQuestionButton" class="button-primary animate__animated animate__tada animate__delay-2s">
+                <i class="fas fa-play mr-2"></i> اذهب إلى السؤال
+            </button>
+        </div>
+    </div>
+    
+    <div id="question-display-area" class="relative text-center p-4 rounded-lg min-h-[200px] flex flex-col items-center justify-center bg-gray-700 hidden">
+        <p id="double-points-indicator" class="text-yellow-400 font-bold text-xl mb-2 animate__animated animate__pulse animate__infinite hidden">نقاط مضاعفة (2X)!</p>
+        <p id="question-text" class="text-2xl font-semibold mb-2"></p>
+        <div id="choices-display" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-sm mx-auto hidden">
+            </div>
+        <button id="show-answer-button-risk" class="button-secondary text-white font-bold py-2 px-6 rounded-lg text-lg mt-4 hidden"><i class="fas fa-eye mr-2"></i> إظهار الإجابة الصحيحة</button>
+        <p id="answer-text" class="text-xl mt-2 hidden game-answer-text"></p> 
+    </div>
+
+    <div id="game-controls-risk" class="mt-6">
+        <div id="helpline-timer-container" class="mt-4 flex flex-col items-center justify-center hidden">
+            <button id="helpline-start-button" class="button-primary text-white font-bold py-2 px-6 rounded-lg text-lg mb-2"><i class="fas fa-play mr-2"></i> بداية الوقت</button>
+            <div class="flex items-center text-3xl font-bold text-yellow-400">
+                <i class="fas fa-phone-alt ml-2" id="helpline-icon"></i>
+                <span id="helpline-timer-display">30</span>
+            </div>
+        </div>
+
+        <div id="answer-controls" class="grid grid-cols-2 gap-4 hidden">
+            <button id="correct-button-risk" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-lg"><i class="fas fa-check mr-2"></i> صحيح</button>
+            <button id="wrong-button-risk" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg text-lg"><i class="fas fa-times mr-2"></i> خطأ</button>
+        </div>
+        
+        <div id="lifeline-buttons" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 hidden">
+            <button id="helpline-button"><i class="fas fa-phone-alt mr-2"></i> اتصال بصديق</button>
+            <button id="extra-time-button"><i class="fas fa-stopwatch mr-2"></i> إضافة وقت</button>
+            <button id="show-choices-button"><i class="fas fa-list-ul mr-2"></i> عرض اختيارات</button>
+            <button id="steal-question-button"><i class="fas fa-user-secret mr-2"></i> سرقة سؤال</button>
+        </div>
+
+        <button id="continue-game-button" class="button-primary w-full text-white font-bold py-3 rounded-lg text-lg mt-4 hidden">
+            <i class="fas fa-forward mr-2"></i> استكمال اللعب
+        </button>
+    </div>
+</div>
+
+<div id="risk-game-over-screen" class="hidden text-center p-4 flex flex-col justify-center items-center">
+    <div id="winner-card" class="winner-card bg-gray-700 w-full text-white">
+        <i id="winner-trophy" class="fas fa-trophy text-8xl mb-4 text-gray-500"></i>
+        <h2 id="winner-title" class="text-2xl hidden">الفائز هو</h2>
+        <h3 id="winner-name" class="winner-name hidden"></h3>
+        <div id="final-scores" class="mt-4 text-lg space-y-1 hidden">
+            <p id="final-score-1" class="font-bold"></p>
+            <p id="final-score-2"></p>
+        </div>
+    </div>
+    <div class="mt-6 grid grid-cols-2 gap-4 w-full">
+        <button id="play-again-button" class="button-primary text-white font-bold py-3 px-6 rounded-xl text-lg"><i class="fas fa-redo mr-2"></i> لعب مرة أخرى</button>
+        <button id="main-menu-lobby-button" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-xl text-lg"><i class="fas fa-forward mr-2"></i> اللعبة اللي بعدها</button>
+    </div>
+</div>

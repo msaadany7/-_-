@@ -1,0 +1,39 @@
+<div id="acting-screen" class="text-center">
+    <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+        <div id="team1-display-acting" class="p-4 rounded-lg text-white font-bold transition-colors"><h3>الفريق الأول</h3><p class="text-3xl mt-1">0</p></div>
+        <div id="team2-display-acting" class="p-4 rounded-lg text-white font-bold transition-colors"><h3>الفريق الثاني</h3><p class="text-3xl mt-1">0</p></div>
+    </div>
+
+    <div class="bg-gray-900 p-4 rounded-xl mb-4 space-y-2">
+        <p class="text-xl">الدور على: <span id="current-turn-team-acting" class="font-extrabold"></span></p>
+        <p id="guess-counter-acting" class="text-lg font-bold text-yellow-400 hidden">التخمينات المتبقية: 3</p>
+        <div id="timer-display-acting" class="text-5xl font-mono font-bold text-red-500 hidden"></div>
+    </div>
+
+    <div id="game-area-acting" class="min-h-[250px] flex flex-col items-center justify-center">
+        <div id="card-grid-acting" class="grid grid-cols-5 gap-3 w-full">
+            </div>
+        <div id="tiebreaker-acting-view" class="hidden">
+            <p class="text-lg text-gray-400 mb-2">الجولة الفاصلة! قم بتمثيل:</p>
+            <p id="tiebreaker-player-name" class="text-5xl font-black text-yellow-300"></p>
+        </div>
+    </div>
+    
+    <div id="host-controls-acting" class="mt-4 grid grid-cols-2 gap-4 hidden">
+        <button id="correct-acting-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-lg">تخمين صحيح</button>
+        <button id="wrong-acting-button" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg text-lg">تخمين خاطئ</button>
+    </div>
+
+    <div id="steal-controls-acting" class="mt-4 grid grid-cols-2 gap-4 hidden">
+        <button id="steal-correct-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-lg">سرقة صحيحة</button>
+        <button id="steal-wrong-button" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg text-lg">سرقة خاطئة</button>
+    </div>
+
+    <div id="reveal-player-overlay" class="full-screen-overlay hidden">
+        <div class="bg-gray-800 p-8 rounded-2xl shadow-lg text-center border-2 border-primary-neon">
+            <p class="text-xl text-gray-300 mb-3">مطلوب تمثيل اللاعب:</p>
+            <h2 id="player-name-reveal" class="text-5xl font-black text-yellow-400 mb-8"></h2>
+            <button id="start-acting-button" class="button-primary w-full">ابدأ التمثيل (45 ثانية)</button>
+        </div>
+    </div>
+</div>

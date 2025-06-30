@@ -1,0 +1,144 @@
+/* --- أنماط لعبة "اكدب صح" بالمظهر المطور --- */
+
+/* تصميم شاشة اللعبة الرئيسي */
+#lie-correctly-screen .team-display-box {
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+}
+
+#lie-correctly-screen .team-display-box.active-team-turn {
+    transform: scale(1.05);
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 20px var(--primary-neon);
+}
+
+/* ========================================================
+   ===   أنماط أزرار الاختيارات (تم تصحيح المُحدد هنا)   ===
+   ========================================================
+*/
+#choices-container-lie .choice-button-lie {
+    background: linear-gradient(145deg, #2c3e50, #34495e); /* تدرج لوني داكن وأنيق */
+    color: #ecf0f1 !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 12px !important; /* حواف أكثر دائرية */
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    width: 95%; /* عرض الزر ليكون متناسقًا */
+    max-width: 500px;
+    text-align: center;
+    border: none !important; /* إزالة الحدود القديمة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 -2px 4px rgba(0,0,0,0.3) !important;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* تأثير مرور الماوس (Hover) */
+#choices-container-lie .choice-button-lie:hover:not(:disabled) {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    background: linear-gradient(145deg, #34495e, #3a5064); /* تفتيح اللون قليلاً */
+}
+
+/* تأثير الضغط على الزر */
+#choices-container-lie .choice-button-lie:active:not(:disabled) {
+    transform: translateY(-2px) scale(0.98) !important;
+}
+
+/* تصميم حالة الإجابة الصحيحة */
+#choices-container-lie .choice-button-lie.correct-choice {
+    background: linear-gradient(135deg, var(--primary-neon), #00a859) !important;
+    box-shadow: 0 0 25px var(--primary-neon), 0 0 40px rgba(0, 255, 127, 0.5) !important;
+    color: #1a202c !important;
+    animation: correct-answer-glow 1.5s infinite alternate;
+}
+
+@keyframes correct-answer-glow {
+    from {
+        box-shadow: 0 0 15px var(--primary-neon), 0 0 25px rgba(0, 255, 127, 0.3);
+    }
+    to {
+        box-shadow: 0 0 30px var(--primary-neon), 0 0 50px rgba(0, 255, 127, 0.6);
+    }
+}
+
+/* تصميم حالة الإجابة الخاطئة */
+#choices-container-lie .choice-button-lie.wrong-choice {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important; /* لون أحمر أكثر وضوحًا */
+    box-shadow: 0 0 20px #e74c3c !important;
+    animation: wrong-answer-shake 0.5s ease-out forwards;
+}
+
+/* أنيميشن اهتزاز للإجابة الخاطئة */
+@keyframes wrong-answer-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+#choices-container-lie .choice-button-lie:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* --- مؤثرات بصرية محسنة للشاشات --- */
+
+/* تأثير دخول وخروج للشاشات العلوية */
+.full-screen-overlay {
+    transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+}
+.full-screen-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+}
+.full-screen-overlay:not(.hidden) {
+    backdrop-filter: blur(10px);
+}
+.deception-card, .result-card {
+    animation: zoom-in-fade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes zoom-in-fade {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* تصميم كارت النتيجة */
+#result-phase-lie .result-card {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 30px rgba(0, 255, 127, 0.5), 0 0 60px rgba(0, 255, 127, 0.3);
+}
+
+/* تصميم رسالة النتيجة (صحيحة/خاطئة) */
+#result-message-lie {
+    text-shadow: 0 0 20px currentColor;
+    animation: pulse-text-result 1.5s infinite alternate;
+}
+
+@keyframes pulse-text-result {
+    from {
+        transform: scale(1);
+        text-shadow: 0 0 15px currentColor;
+    }
+    to {
+        transform: scale(1.05);
+        text-shadow: 0 0 25px currentColor, 0 0 40px currentColor;
+    }
+}
+
+/* لون رسالة النتيجة */
+#result-message-lie.correct {
+    color: var(--primary-neon);
+}
+#result-message-lie.wrong {
+    color: #ef4444;
+}
+
+/* تصميم نص الإجابة الصحيحة */
+#correct-answer-display-lie {
+    color: #facc15 !important;
+    text-shadow: 0 0 15px #facc15, 0 0 25px #facc15 !important;
+    font-weight: bold;
+}

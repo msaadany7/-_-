@@ -1,0 +1,49 @@
+<div id="bank-game-screen">
+    <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+        <div id="team1-display-bank" class="p-4 rounded-lg text-white font-bold transition-colors"> <h3 class="text-xl"></h3><p class="text-3xl mt-1"></p> </div>
+        <div id="team2-display-bank" class="p-4 rounded-lg text-white font-bold transition-colors"> <h3 class="text-xl"></h3><p class="text-3xl mt-1"></p> </div>
+    </div>
+    <div class="bg-gray-900 p-4 rounded-xl mb-4 space-y-3">
+        <div class="flex justify-between items-center text-lg">
+            <p>الدور على: <span id="current-turn-team-name-bank" class="font-extrabold"></span></p>
+            <p>الرصيد المؤقت: <span id="pot-display-bank" class="font-extrabold text-yellow-400">0</span></p>
+        </div>
+        <div class="flex justify-between items-center text-lg">
+            <p>السؤال: <span id="question-counter-display-bank" class="font-bold">0/12</span></p>
+            <div id="timer-display-bank" class="text-2xl font-mono font-bold text-gray-100">120</div>
+        </div>
+    </div>
+    <div class="progress-bar-container mb-4"><div id="questions-progress-bar-bank" class="progress-bar" style="width: 100%;"></div></div>
+    <div id="question-card-bank" class="text-center p-6 rounded-lg min-h-[150px] flex flex-col items-center justify-center">
+        <p id="question-text-bank" class="text-2xl font-semibold mb-2"></p>
+        <p id="answer-text-bank" class="text-2xl hidden game-answer-text"></p>
+        <p id="last-chance-text-bank" class="hidden mt-4 text-yellow-400 font-bold text-lg animate__animated animate__pulse animate__infinite">آخر فرصة للبنك!</p>
+    </div>
+    <div id="game-controls-bank" class="mt-6">
+        <div id="decision-buttons-bank" class="grid grid-cols-2 gap-4">
+            <button id="correct-button-bank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-lg"><i class="fas fa-check mr-2"></i> صحيح</button>
+            <button id="wrong-button-bank" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg text-lg"><i class="fas fa-times mr-2"></i> خطأ</button>
+        </div>
+        <button id="next-question-button-bank" class="hidden mt-4 button-primary w-full text-white font-bold py-3 rounded-lg text-lg">السؤال التالي</button>
+        <div class="mt-4 grid grid-cols-2 gap-4">
+            <button id="show-answer-button-bank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg text-lg"><i class="fas fa-eye mr-2"></i> إظهار الإجابة</button>
+            <button id="bank-button-bank" class="button-bank text-gray-900 font-bold py-3 rounded-lg text-lg"><i class="fas fa-piggy-bank mr-2"></i> بنك</button>
+        </div>
+    </div>
+</div>
+<div id="score-popup"></div>
+<div id="bank-game-over-screen" class="hidden text-center p-4 flex flex-col justify-center items-center">
+     <div id="winner-card" class="winner-card bg-gray-700 w-full text-white">
+         <i id="winner-trophy" class="fas fa-trophy text-8xl mb-4 text-gray-500"></i>
+         <h2 id="winner-title" class="text-2xl hidden">الفائز هو</h2>
+         <h3 id="winner-name" class="winner-name hidden"></h3>
+         <div id="final-scores" class="mt-4 text-lg space-y-1 hidden">
+             <p id="final-score-1" class="font-bold"></p>
+             <p id="final-score-2"></p>
+         </div>
+     </div>
+     <div class="mt-6 grid grid-cols-2 gap-4 w-full">
+         <button id="play-again-button" class="button-primary text-white font-bold py-3 px-6 rounded-xl text-lg"><i class="fas fa-redo mr-2"></i> لعب مرة أخرى</button>
+         <button id="main-menu-lobby-button" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-xl text-lg"><i class="fas fa-forward mr-2"></i> اللعبة اللي بعدها</button>
+     </div>
+</div>

@@ -1,0 +1,36 @@
+<div id="dress-friend-screen" class="text-center">
+    <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+        <div id="team1-display-dress" class="p-4 rounded-lg text-white font-bold transition-colors"><h3>الفريق الأول</h3><p class="text-3xl mt-1">0</p></div>
+        <div id="team2-display-dress" class="p-4 rounded-lg text-white font-bold transition-colors"><h3>الفريق الثاني</h3><p class="text-3xl mt-1">0</p></div>
+    </div>
+
+    <div class="bg-gray-900 p-4 rounded-xl mb-4">
+        <h2 id="round-display-dress" class="text-3xl font-bold mb-2">الجولة الأولى</h2>
+        <div id="answer-timer-dress" class="text-5xl font-mono font-bold text-yellow-400 hidden">30</div>
+    </div>
+
+    <div id="game-area-dress" class="min-h-[250px] flex flex-col items-center justify-center">
+        
+        <img id="roulette-wheel" src="games/dress_friend/images/roulette.png" alt="عجلة الروليت" class="roulette-wheel cursor-pointer">
+        <div id="question-display-dress" class="hidden text-2xl font-semibold p-4">
+        </div>
+
+        <button id="start-timer-button" class="hidden mt-4 button-primary">ابدأ العد التنازلي</button>
+    </div>
+
+    <div id="controls-area" class="mt-6 space-y-3">
+        <button id="answers-finished-button" class="hidden bg-green-600 hover:bg-green-700 w-full font-bold py-3 rounded-lg text-lg">انتهت الإجابات</button>
+
+        <div id="outcome-buttons-dress" class="grid grid-cols-2 gap-4 hidden">
+            <button id="team1-wins-button" class="font-bold py-3 rounded-lg text-lg text-white transition-all duration-200 hover:opacity-80">فوز الفريق الأول</button>
+            <button id="team2-wins-button" class="font-bold py-3 rounded-lg text-lg text-white transition-all duration-200 hover:opacity-80">فوز الفريق الثاني</button>
+        </div>
+        
+        <button id="continue-button-dress" class="hidden button-primary w-full text-white font-bold py-3 rounded-lg text-lg">
+            الجولة التالية <i class="fas fa-arrow-left mr-2"></i>
+        </button>
+    </div>
+</div>
+
+<div id="dress-friend-over-screen" class="hidden">
+</div>

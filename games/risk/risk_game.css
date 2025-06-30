@@ -1,0 +1,269 @@
+/* --- أنماط خاصة بلعبة ريسك (نسخة محدثة بقوة تحديد أعلى وإجبارية) --- */
+
+/* أنماط لأزرار اختيار الأسئلة */
+#risk-game-screen .topic-card .question-box {
+    background-color: #3b82f6; /* أزرق أساسي */
+    color: #ffffff;
+    border: 1px solid #1e90ff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(60, 150, 255, 0.2);
+    font-weight: 700;
+}
+
+#risk-game-screen .topic-card .question-box:hover:not(:disabled) {
+    background-color: #2563eb; /* أزرق أغمق عند التفاعل */
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(60, 150, 255, 0.4);
+    border-color: #00bfff; /* حدود متوهجة عند التفاعل */
+}
+
+#risk-game-screen .topic-card .question-box:disabled {
+    background-color: #4b5563; /* رمادي داكن للأسئلة المجابة */
+    color: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* مؤثر بصري عند الضغط على مربع السؤال */
+#risk-game-screen .question-box-selected {
+    animation: question-box-pop 0.3s ease-out forwards;
+}
+
+@keyframes question-box-pop {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 191, 255, 0.5); }
+    50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(60, 150, 255, 0.2); }
+}
+
+/* أنماط للسؤال المضاعف */
+#risk-game-screen .double-points-question {
+    background: linear-gradient(45deg, #ffd700, #ff8c00); /* تدرج ذهبي */
+    color: #1a202c !important; /* نص داكن لتباين عالي */
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 140, 0, 0.4);
+    animation: double-points-pulse 1.5s infinite alternate; /* نبض متوهج */
+}
+
+#risk-game-screen .double-points-question:hover:not(:disabled) {
+    background: linear-gradient(45deg, #ffe033, #ff9900); /* تدرج أفتح عند التفاعل */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 35px rgba(255, 140, 0, 0.6);
+    transform: translateY(-5px) scale(1.08); /* تأثير تحليق أكبر */
+}
+
+@keyframes double-points-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 140, 0, 0.4); }
+    100% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 140, 0, 0.6); }
+}
+
+/* --- أنماط شاشة تأكيد السؤال المضاعف الجديدة --- */
+#double-points-confirmation-screen .button-primary {
+    background: linear-gradient(135deg, var(--warning-orange), #ff6f00);
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
+}
+
+#double-points-confirmation-screen .button-primary:hover {
+    box-shadow: 0 8px 25px rgba(255, 165, 0, 0.6);
+}
+
+/* --- أنماط خاصة بوسيلة مساعدة "عرض اختيارات" --- */
+#risk-game-screen #choices-display .choice-button {
+    background: var(--blue-choice-gradient);
+    color: var(--text-light) !important;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #0099ff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#risk-game-screen #choices-display .choice-button:hover {
+    background: linear-gradient(135deg, #00bfff, #1e90ff);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+#risk-game-screen #choices-display .choice-button.correct-choice {
+    background: linear-gradient(135deg, var(--primary-neon), #00a859);
+    box-shadow: 0 0 15px var(--primary-neon), 0 0 25px var(--primary-neon);
+    border-color: var(--primary-neon);
+    animation: correct-answer-pulse 0.8s ease-out forwards;
+    color: #1a202c !important;
+}
+@keyframes correct-answer-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 25px var(--primary-neon); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#risk-game-screen #choices-display .choice-button.wrong-choice {
+    background: linear-gradient(135deg, var(--danger-red), #cc3300);
+    box-shadow: 0 0 15px var(--danger-red), 0 0 25px var(--danger-red);
+    border-color: var(--danger-red);
+    animation: wrong-answer-shake 0.5s ease-out forwards;
+    color: var(--text-light) !important;
+}
+@keyframes wrong-answer-shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* --- أنماط نهائية لأزرار وسائل المساعدة مع زيادة القوة --- */
+
+/* النمط الأساسي لجميع الأزرار */
+#risk-game-screen #lifeline-buttons button {
+    background-color: #2c3e50 !important; /* زيادة القوة */
+    color: #ecf0f1 !important; /* زيادة القوة */
+    border: 2px solid #34495e !important; /* زيادة القوة */
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease-in-out !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+    transform: none !important; /* إلغاء أي تحويلات سابقة */
+    animation: none !important; /* إلغاء أي أنيميشن سابقة */
+}
+
+/* تأثير بسيط عند مرور الماوس على الأزرار غير النشطة */
+#risk-game-screen #lifeline-buttons button:hover:not(.lifeline-active):not(.lifeline-used) {
+    background-color: #34495e !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* الحالة النشطة (مضيئة وجاهزة للاستخدام) */
+#risk-game-screen #lifeline-buttons button.lifeline-active {
+    background: linear-gradient(135deg, #00c6ff, #0072ff) !important;
+    color: #ffffff !important;
+    border-color: #00e1ff !important;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6), 
+                0 0 25px rgba(0, 114, 255, 0.5), 
+                inset 0 0 5px rgba(255, 255, 255, 0.3) !important;
+    animation: pulsing-glow 2s infinite alternate !important;
+}
+
+/* تأثير Hover للحالة النشطة لزيادة التفاعل */
+#risk-game-screen #lifeline-buttons button.lifeline-active:hover {
+    transform: translateY(-5px) scale(1.05) !important;
+    box-shadow: 0 0 25px rgba(0, 198, 255, 0.8), 
+                0 0 40px rgba(0, 114, 255, 0.7),
+                inset 0 0 8px rgba(255, 255, 255, 0.4) !important;
+}
+
+/* أنيميشن النبض للإضاءة */
+@keyframes pulsing-glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 198, 255, 0.5), 
+                    0 0 20px rgba(0, 114, 255, 0.4), 
+                    inset 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 198, 255, 0.7), 
+                    0 0 35px rgba(0, 114, 255, 0.6), 
+                    inset 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* الحالة المستخدمة (مطفأة وباهتة) */
+#risk-game-screen #lifeline-buttons button.lifeline-used {
+    background: #1f2937 !important;
+    color: #4b5563 !important;
+    border-color: #2d3748 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4) !important;
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    animation: none !important;
+}
+
+/* إزالة أي تأثيرات عند مرور الماوس على الزر المستخدم */
+#risk-game-screen #lifeline-buttons button.lifeline-used:hover {
+    transform: none !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4) !important;
+}
+
+
+/* --- أنماط مؤثر سؤال النقاط المضاعفة (تحديث) --- */
+.double-points-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 165, 0, 0.95);
+    z-index: 9999;
+    pointer-events: none;
+    animation: flash-effect 1s ease-out forwards;
+    box-shadow: 0 0 120px rgba(255, 165, 0, 0.9);
+}
+
+@keyframes flash-effect {
+    0% { opacity: 0; transform: scale(0.8); }
+    20% { opacity: 1; transform: scale(1); }
+    80% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.1); }
+}
+/* --- تصميم جديد للعد التنازلي قبل السؤال (دائرة متوهجة) --- */
+
+/* حاوية العد التنازلي الرئيسية */
+#pre-question-countdown-display {
+    position: fixed; /* يبقى ثابتًا في وسط الشاشة */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 550; /* لضمان ظهوره في المقدمة */
+
+    /* تصميم الدائرة */
+    width: 220px;
+    height: 220px;
+    background-color: rgba(13, 17, 23, 0.9); /* خلفية داكنة شبه شفافة */
+    border: 4px solid var(--secondary-neon, #ff00ff); /* حدود بنفسجية نيون */
+    border-radius: 50%; /* لجعلها دائرية */
+    
+    /* توهج للدائرة */
+    box-shadow: 0 0 20px var(--secondary-neon, #ff00ff), 
+                0 0 40px var(--secondary-neon, #ff00ff), 
+                inset 0 0 15px rgba(255, 0, 255, 0.5);
+
+    /* لترتيب الرقم في المنتصف */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* نمط الرقم داخل الدائرة */
+#pre-question-countdown-number {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 800;
+    font-size: 7rem; /* حجم خط كبير لكن مناسب للدائرة */
+    color: var(--secondary-neon, #ff00ff);
+    
+    /* توهج للنص */
+    text-shadow: 0 0 15px var(--secondary-neon, #ff00ff), 
+                 0 0 30px var(--secondary-neon, #ff00ff);
+    
+    /* إزالة الأنماط القديمة إذا كانت موجودة */
+    animation: none; /* سيتم التحكم به من الجافاسكريبت */
+}
+
+/* يمكننا استخدام نفس الأنيميشن القديم لأنه مناسب */
+/* .countdown-big-number { } -> لا حاجة لتغيير هذا الكلاس */
+
+/* تأكد من أن الأنيميشن الذي يستدعيه الجافاسكريبت مناسب */
+@keyframes giant-number-pop {
+    0% { transform: scale(0.7); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}

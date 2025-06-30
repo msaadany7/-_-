@@ -1,0 +1,195 @@
+.acting-card {
+    aspect-ratio: 3 / 4;
+    background: #111827;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(0, 255, 127, 0.1);
+    background-image: radial-gradient(circle at top left, rgba(0, 255, 127, 0.2), transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.2), transparent 40%);
+    color: var(--text-light);
+}
+
+.acting-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-30deg);
+    transition: left 0.6s ease;
+}
+
+.acting-card:hover:not(:disabled) {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--primary-neon);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 25px var(--primary-neon);
+}
+
+.acting-card:hover:not(:disabled)::before {
+    left: 150%;
+}
+
+.acting-card:disabled {
+    transform: rotateY(180deg);
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-image: none;
+    background-color: #1f2937;
+    color: #4a5568;
+}
+
+.acting-card.dissolving {
+    animation: dissolve 0.8s ease-out forwards;
+}
+
+@keyframes dissolve {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8) rotateZ(15deg);
+        filter: blur(5px);
+    }
+}
+
+.acting-card.flipping {
+    animation: card-flip 0.6s ease-in-out forwards;
+}
+
+@keyframes card-flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+#reveal-player-overlay .button-primary {
+    font-size: 1.5rem;
+}
+
+#player-name-reveal {
+    animation: text-glow 1.5s ease-in-out infinite alternate;
+}
+
+#guess-counter-acting {
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 1px solid var(--warning-orange);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+#timer-display-acting {
+    animation: pulse-timer 1s infinite;
+}
+
+@keyframes pulse-timer {
+    50% { transform: scale(1.05); }
+}
+
+.shake-animation {
+    animation: shake-horizontal 0.5s ease-in-out;
+}
+
+@keyframes shake-horizontal {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #f97316;
+    }
+    to {
+        text-shadow: 0 0 20px #fde047, 0 0 35px #fb923c, 0 0 50px #f97316;
+    }
+}
+
+#timer-display-acting.time-low {
+    color: #ef4444;
+    animation: pulse-timer-fast 0.6s infinite;
+}
+
+@keyframes pulse-timer-fast {
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px #ef4444;
+    }
+}
+
+#acting-screen.steal-turn-flash {
+    animation: steal-flash-effect 0.7s ease-out;
+}
+
+@keyframes steal-flash-effect {
+    50% {
+        box-shadow: inset 0 0 0 100vw rgba(252, 211, 77, 0.3);
+    }
+}
+
+.score-flash {
+    animation: score-flash-animation 1s ease-out;
+}
+
+@keyframes score-flash-animation {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    25%, 75% {
+        transform: scale(1.05);
+        filter: brightness(1.75) saturate(2);
+    }
+    50% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+#card-grid-acting.grid-disabled .acting-card {
+    pointer-events: none;
+    opacity: 0.6;
+}
+/* هذا الكود يضاف في نهاية ملف acting.css */
+
+#tiebreaker-card {
+    background-color: #1f2937;
+    border: 3px solid #facc15;
+    box-shadow: 0 0 20px #facc15, 0 0 40px #d946ef, 0 0 60px #3b82f6;
+    animation: tiebreaker-glow 2s infinite alternate;
+}
+
+@keyframes tiebreaker-glow {
+    from {
+        box-shadow: 0 0 20px #facc15, 0 0 40px #d946ef, 0 0 60px #3b82f6;
+    }
+    to {
+        box-shadow: 0 0 30px #fde047, 0 0 55px #f0abfc, 0 0 75px #93c5fd;
+    }
+}
+
+#tiebreaker-team-selection .rps-team-selector-button:disabled {
+    opacity: 0.5;
+    transform: scale(0.95);
+    cursor: not-allowed;
+}
+
+#tiebreaker-team-selection .rps-team-selector-button.selected {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #fff;
+}
